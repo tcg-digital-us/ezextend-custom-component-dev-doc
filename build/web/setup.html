@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setup &mdash; EzeXtend Development Manual  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Creating a Custom Dashboard Component" href="custom_component/index.html" />
+    <link rel="prev" title="Install" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> EzeXtend Development Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#nvm">NVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#nginx">Nginx</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nvm">NVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nginx">Nginx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ezextend">ezeXtend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#development-mode">Development Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#release-mode">Release Mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="custom_component/index.html">Creating a Custom Dashboard Component</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="custom_component/add_entry.html">Add Entry in Components List Sidebar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_component/default_parameters.html">Create Default Parameters for Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_component/create_component.html">Create a Custom React Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_component/formatting_options.html">Create Component Formatting Options</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">EzeXtend Development Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Setup</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/setup.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline"></a></h1>
+<section id="nvm">
+<h2>NVM<a class="headerlink" href="#nvm" title="Permalink to this headline"></a></h2>
+<p>Set NVM to use the NodeJs version required for this project:</p>
+<pre class="literal-block">nvm use 10.15.3</pre>
+</section>
+<section id="nginx">
+<h2>Nginx<a class="headerlink" href="#nginx" title="Permalink to this headline"></a></h2>
+<p>ezeXtend will require an Nginx reverse proxy so that calls made to local routes will be redirected to their relevant services, whether those services are running on the local dev machine, or on a cloud-hosted VM.</p>
+<p>To edit the Nginx configuration you are going to want to add a configuration file named <code class="code docutils literal notranslate"><span class="pre">ezeXtend_proxy</span></code>  inside the folder <code class="code docutils literal notranslate"><span class="pre">/etc/nginx/sites-available/</span></code>. Within the file, you will need to define an Nginx server and the proxy route locations with minimal configuration, such as below:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>server {
+   location /module_designer/ {
+      proxy_pass http://127.0.0.1:3001/;
+   }
+
+   location /elastic_api/ {
+      proxy_pass http://127.0.0.1:9241/;
+   }
+}
+</pre></div>
+</div>
+<p>The purpose of this configuration is to only register two url routes, <code class="code docutils literal notranslate"><span class="pre">/module_designer/</span></code> and <code class="code docutils literal notranslate"><span class="pre">/elastic_api/</span></code> that redirect calls for both the ezeXtend react page itself and the Elasticsearch database.</p>
+<p>Now you can start Nginx with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo nginx
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If Nginx starts successfully, you will see no errors or output, as it begins the server and runs it in the background. Because Nginx starts and runs in the background, before trying to run it, it is helpfull to use <code class="code docutils literal notranslate"><span class="pre">htop</span></code> before hand to ensure that it isn’t already running. If it us, kill the currently running Nginx with <code class="code docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">pkill</span> <span class="pre">-9</span> <span class="pre">nginx</span></code>.</p>
+</div>
+</section>
+<section id="ezextend">
+<h2>ezeXtend<a class="headerlink" href="#ezextend" title="Permalink to this headline"></a></h2>
+<p>Now we must prepare the ezeXtend project to be run. The ezeXtend project is split into two pieces, one inside of the other. The module designer project contains both the frontend for the ezeXtend page (in the <code class="code docutils literal notranslate"><span class="pre">ui</span></code> folder) as well as backend code (in <code class="code docutils literal notranslate"><span class="pre">server</span></code>) that helps it interface with Kibana/Elasticsearch behind the scenes.</p>
+<p>Whenever we are extending the functionality of the front end (creating custom visualisations, etc.) we can run the front end in either a development mode which lacks an amount of full functionality, or a release mode that more closely emulates the full functionality of the page when working in tandem with Kibana/Elasticsearch. To achieve that full release functionality, you must build the <code class="code docutils literal notranslate"><span class="pre">ui</span></code> react project inside <code class="code docutils literal notranslate"><span class="pre">module_designer</span></code> and use the Nginx reverse proxy to provide Elasticsearch connection functionality. This may sound confusing but we will cover both aspects.</p>
+<section id="development-mode">
+<h3>Development Mode<a class="headerlink" href="#development-mode" title="Permalink to this headline"></a></h3>
+<p>To run ezeXtend in development mode, execute:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /EZEXTEND_ROOT/ui
+npm install
+npm start
+</pre></div>
+</div>
+<p>Assuming all went well, then the react project should start up and be available at <code class="code docutils literal notranslate"><span class="pre">http://localhost:3000</span></code>.</p>
+</section>
+<section id="release-mode">
+<h3>Release Mode<a class="headerlink" href="#release-mode" title="Permalink to this headline"></a></h3>
+<p>To run ezeXtend in release mode, execute:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /EZEXTEND_ROOT/
+npm install
+<span class="nb">cd</span> /EZEXTEND_ROOT/ui
+npm install
+npm run build
+<span class="nb">cd</span> ..
+npm start
+</pre></div>
+</div>
+<p>Again, assuming all went well, then the release version of the React project should be available at <code class="code docutils literal notranslate"><span class="pre">http://&lt;local</span> <span class="pre">domain&gt;/module_designer</span></code> where the <code class="code docutils literal notranslate"><span class="pre">&lt;local</span> <span class="pre">domain&gt;</span></code> can either be localhost, or any host that you have listed in your <code class="code docutils literal notranslate"><span class="pre">/etc/hosts</span></code> file that redirect to <code class="code docutils literal notranslate"><span class="pre">127.0.0.1</span></code>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="install.html" class="btn btn-neutral float-left" title="Install" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="custom_component/index.html" class="btn btn-neutral float-right" title="Creating a Custom Dashboard Component" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, TCG Digital.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

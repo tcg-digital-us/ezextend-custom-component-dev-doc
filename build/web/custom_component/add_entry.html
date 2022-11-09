@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Entry in Components List Sidebar &mdash; EzeXtend Development Manual  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Create Default Parameters for Component" href="default_parameters.html" />
+    <link rel="prev" title="Creating a Custom Dashboard Component" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> EzeXtend Development Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#nvm">NVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#nginx">Nginx</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../setup.html#nvm">NVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup.html#nginx">Nginx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup.html#ezextend">ezeXtend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup.html#development-mode">Development Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup.html#release-mode">Release Mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Creating a Custom Dashboard Component</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Add Entry in Components List Sidebar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="default_parameters.html">Create Default Parameters for Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_component.html">Create a Custom React Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formatting_options.html">Create Component Formatting Options</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EzeXtend Development Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Creating a Custom Dashboard Component</a> &raquo;</li>
+      <li>Add Entry in Components List Sidebar</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/custom_component/add_entry.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="add-entry-in-components-list-sidebar">
+<h1>Add Entry in Components List Sidebar<a class="headerlink" href="#add-entry-in-components-list-sidebar" title="Permalink to this headline"></a></h1>
+<p>Before creating the custom Button component itself, we need to provide details about our custom element to ezeXtend so that the custom component is displayed as an option in the component sidebar on the left side of the ezeXtend window. Doing this first will allow us to be able to test our Button in the UI and catch any errors in our Button development along the way.</p>
+<p>First, open <code class="code docutils literal notranslate"><span class="pre">/EZEXTEND_ROOT/ui/src/AppConstants/WidjetsMapping.js</span></code>. Inside of this file is a constant variable WidgetsMapping that contains a JSON object of the Labels to be displayed in the sidebar panel as available elemenents to use in the dashboard. Here we add a definition for our new element <code class="code docutils literal notranslate"><span class="pre">CUSTOM_BUTTON</span></code> and the string label that will be shown for it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the sake of brevity in the code examples, elipses are used to denote code that we are not concerned with for our example and thus does not need to be displayed in this tutorial.</p>
+</div>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">WidgetsMapping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="w">     </span><span class="nx">SHAPES</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="w">         </span><span class="p">...</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="w">     </span><span class="p">},</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="w">     </span><span class="nx">CHARTS</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="w">         </span><span class="p">...</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="w">     </span><span class="p">},</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">     </span><span class="nx">INPUTS</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="w">         </span><span class="nx">TEXTBOX</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Text&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">10</span><span class="w">         </span><span class="nx">BUTTON</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Button&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="linenos">11</span><span class="w">         </span><span class="nx">CUSTOM_BUTTON</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Custom Button&#39;</span><span class="p">,</span><span class="w"></span>
+</span><span class="linenos">12</span><span class="w">         </span><span class="nx">RADIO</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Radio&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">13</span><span class="w">         </span><span class="nx">SELECT</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Select&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">14</span><span class="w">         </span><span class="nx">MULTI_SELECT</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Multi Select&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">15</span><span class="w">         </span><span class="nx">LABEL</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Label&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">16</span><span class="w">         </span><span class="nx">IMAGE</span><span class="o">:</span><span class="s1">&#39;Img&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">17</span><span class="w">     </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">18</span><span class="w">     </span><span class="nx">OTHERS</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">19</span><span class="w">         </span><span class="p">...</span><span class="w"></span>
+<span class="linenos">20</span><span class="w">     </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">21</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Next, we need to add the data for the component entry in the sidebar, that is, we need to specify things like the icon to be displayed, etc. To do this, first open <code class="code docutils literal notranslate"><span class="pre">/EZEXTEND_ROOT/ui/src/Components/Sidebar/ComponentsData.js</span></code>. This file contains a constant variable <code class="code docutils literal notranslate"><span class="pre">Groups</span></code> that contains a JSON object with lists of JSON descriptions of each of the sidebar components belonging to each group in the panel. Because we add our custom button to the <code class="code docutils literal notranslate"><span class="pre">Inputs</span></code> section of the <code class="code docutils literal notranslate"><span class="pre">WidgetsMapping</span></code> so too do we have to add a new sidebar component to the <code class="code docutils literal notranslate"><span class="pre">Inputs</span></code> list within the JSON object:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">Groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="w">   </span><span class="nx">Shapes</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="w">      </span><span class="p">...</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="w">   </span><span class="p">],</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="w">   </span><span class="nx">Charts</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="w">      </span><span class="p">...</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="w">   </span><span class="p">],</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">   </span><span class="nx">Inputs</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">10</span><span class="w">            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">WidgetsMapping</span><span class="p">.</span><span class="nx">INPUTS</span><span class="p">.</span><span class="nx">TEXTBOX</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">            </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">BsInputCursor</span><span class="w"> </span><span class="nx">size</span><span class="o">=</span><span class="p">{</span><span class="nx">size</span><span class="p">}</span><span class="w"> </span><span class="nx">color</span><span class="o">=</span><span class="p">{</span><span class="nx">activeColor</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">12</span><span class="w">            </span><span class="nx">active</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">13</span><span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">14</span><span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">15</span><span class="w">            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">WidgetsMapping</span><span class="p">.</span><span class="nx">INPUTS</span><span class="p">.</span><span class="nx">BUTTON</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">16</span><span class="w">            </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">GiClick</span><span class="w"> </span><span class="nx">size</span><span class="o">=</span><span class="p">{</span><span class="nx">size</span><span class="p">}</span><span class="w"> </span><span class="nx">color</span><span class="o">=</span><span class="p">{</span><span class="nx">activeColor</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">17</span><span class="w">            </span><span class="nx">active</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">18</span><span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="hll"><span class="linenos">19</span><span class="w">      </span><span class="p">{</span><span class="w"></span>
+</span><span class="hll"><span class="linenos">20</span><span class="w">            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">WidgetsMapping</span><span class="p">.</span><span class="nx">INPUTS</span><span class="p">.</span><span class="nx">CUSTOM_BUTTON</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="linenos">21</span><span class="w">            </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">HiCursorClick</span><span class="w"> </span><span class="nx">size</span><span class="o">=</span><span class="p">{</span><span class="nx">size</span><span class="p">}</span><span class="w"> </span><span class="nx">color</span><span class="o">=</span><span class="p">{</span><span class="nx">activeColor</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="linenos">22</span><span class="w">            </span><span class="nx">active</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="linenos">23</span><span class="w">      </span><span class="p">},</span><span class="w"></span>
+</span><span class="linenos">24</span><span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">WidgetsMapping</span><span class="p">.</span><span class="nx">INPUTS</span><span class="p">.</span><span class="nx">RADIO</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">26</span><span class="w">            </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">IoMdRadioButtonOn</span><span class="w"> </span><span class="nx">size</span><span class="o">=</span><span class="p">{</span><span class="nx">size</span><span class="p">}</span><span class="w"> </span><span class="nx">color</span><span class="o">=</span><span class="p">{</span><span class="nx">activeColor</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">27</span><span class="w">            </span><span class="nx">active</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">28</span><span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">29</span><span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">30</span><span class="w">            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">WidgetsMapping</span><span class="p">.</span><span class="nx">INPUTS</span><span class="p">.</span><span class="nx">SELECT</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">31</span><span class="w">            </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">BiSelectMultiple</span><span class="w"> </span><span class="nx">size</span><span class="o">=</span><span class="p">{</span><span class="nx">size</span><span class="p">}</span><span class="w"> </span><span class="nx">color</span><span class="o">=</span><span class="p">{</span><span class="nx">activeColor</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">32</span><span class="w">            </span><span class="nx">active</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">33</span><span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">34</span><span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">35</span><span class="w">            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">WidgetsMapping</span><span class="p">.</span><span class="nx">INPUTS</span><span class="p">.</span><span class="nx">LABEL</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">36</span><span class="w">            </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">MdLabel</span><span class="w"> </span><span class="nx">size</span><span class="o">=</span><span class="p">{</span><span class="nx">size</span><span class="p">}</span><span class="w"> </span><span class="nx">color</span><span class="o">=</span><span class="p">{</span><span class="nx">activeColor</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">37</span><span class="w">            </span><span class="nx">active</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">38</span><span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">39</span><span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">40</span><span class="w">            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">WidgetsMapping</span><span class="p">.</span><span class="nx">INPUTS</span><span class="p">.</span><span class="nx">IMAGE</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">41</span><span class="w">            </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">FaImages</span><span class="w"> </span><span class="nx">size</span><span class="o">=</span><span class="p">{</span><span class="nx">size</span><span class="p">}</span><span class="w"> </span><span class="nx">color</span><span class="o">=</span><span class="p">{</span><span class="nx">activeColor</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">42</span><span class="w">            </span><span class="nx">active</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">43</span><span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">44</span><span class="w">   </span><span class="p">],</span><span class="w"></span>
+<span class="linenos">45</span><span class="w">   </span><span class="nx">Others</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="linenos">46</span><span class="w">      </span><span class="p">...</span><span class="w"></span>
+<span class="linenos">47</span><span class="w">   </span><span class="p">],</span><span class="w"></span>
+<span class="linenos">48</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Notice that we are referencing the title via the key-value pair that we entered into the WidgetsMapping object. For the icon, we are using one of the available click-related React icons that are freely available to React developers. You can find more of these icons at <a class="reference external" href="https://react-icons.github.io/react-icons/search?q=click">react-icons</a>. We are using the <code class="code docutils literal notranslate"><span class="pre">HiCursorClick</span></code> icon for our Button, so we will need to import that icon as a dependency at the top of the file:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="w">   </span><span class="p">...</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-icons/ai&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="p">...</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">GrGraphQl</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react-icons/gr&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">BiSelectMultiple</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-icons/bi&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">RiCheckboxMultipleBlankLine</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-icons/ri&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="hll"><span class="linenos"> 9</span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">HiCursorClick</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-icons/hi&#39;</span><span class="p">;</span><span class="w"></span>
+</span><span class="linenos">10</span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">WidgetsMapping</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;AppConstants&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">11</span><span class="kd">const</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">12</span><span class="kd">const</span><span class="w"> </span><span class="nx">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;rgb(203 203 203)&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">13</span><span class="p">...</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If we run ezeXtend in <a class="reference external" href="../setup.html#development-mode">Development Mode</a>, we can see our component that has yet to be created listed as an option in the component sidebar:</p>
+<figure class="align-center">
+<img alt="../_images/add_entry_1.jpg" src="../_images/add_entry_1.jpg" />
+</figure>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Creating a Custom Dashboard Component" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="default_parameters.html" class="btn btn-neutral float-right" title="Create Default Parameters for Component" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, TCG Digital.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,6 +1,8 @@
 # ezextend-custom-component-dev-doc
 Documentation on how to create custom dashboard visualization components
 
+The current pdf build of the manual exists [here](build/pdf/latex/ezextenddevelopmentmanual.pdf)
+
 ## Install Dependencies
 
 ### Sphinx

@@ -1,0 +1,15 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}Install}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}NVM}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Nginx}{1}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Setup}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}NVM}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Nginx}{3}{section.2.2}%
+\contentsline {section}{\numberline {2.3}ezeXtend}{4}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Development Mode}{4}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Release Mode}{4}{subsection.2.3.2}%
+\contentsline {chapter}{\numberline {3}Creating a Custom Dashboard Component}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Add Entry in Components List Sidebar}{5}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Create Default Parameters for Component}{7}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Create a Custom React Component}{8}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Create Component Formatting Options}{8}{section.3.4}%

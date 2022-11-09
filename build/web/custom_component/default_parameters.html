@@ -92,7 +92,59 @@
              
   <section id="create-default-parameters-for-component">
 <h1>Create Default Parameters for Component<a class="headerlink" href="#create-default-parameters-for-component" title="Permalink to this headline"></a></h1>
-<p>Lorem ipsum et dolor</p>
+<p>To create the default parameters for our custom button we need to create a new file in <code class="code docutils literal notranslate"><span class="pre">/EZEXTEND_ROOT/ui/src/Components/Widgets/Defaults</span></code> named <code class="code docutils literal notranslate"><span class="pre">CustomButton.js</span></code>.</p>
+<p>In this file, we need to create a single exported variable, a JSON object that contains information describing the default state of the component when it is initially dragged onto the dashboard:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">CustomButtonData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="w">   </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="w">      </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="w">      </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">40</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="w">   </span><span class="p">},</span><span class="w"></span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="w">   </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">      </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Action&#39;</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">10</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Here we have defined the initial size of the element and the string text to be displayed on the button when it is first created. Now, we can navigate to the file <code class="code docutils literal notranslate"><span class="pre">/EZEXTEND_ROOT/ui/src/Components/Widgets/Defaults/index.js</span></code> to import and apply the default data we have just created. First we will import the JSON object we just created:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">...</span><span class="w"></span>
+<span class="linenos">2</span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ChartData</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./Chart&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">3</span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ButtonData</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./Button&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="hll"><span class="linenos">4</span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CustomButtonData</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./CustomButton&#39;</span><span class="p">;</span><span class="w"></span>
+</span><span class="linenos">5</span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">MarkdownData</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./Markdown&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">6</span><span class="p">...</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Currently as you can see, all of the custom data is spread across multiple files. This index file will serve as a one-stop-shop to access all of these default data objects. To achieve this, all of the defaults that are imported are promptly exported from <code class="code docutils literal notranslate"><span class="pre">index.js</span></code> so that they can be called elsewhere by importing this index file. We will include our imported custom button data as an available export:</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>More info needs to be added here as why this is necessary given that this list of exports is not used elsewhere in the code.</p>
+</div>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">2</span><span class="w">  </span><span class="nx">ChartData</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">3</span><span class="w">  </span><span class="nx">ButtonData</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="linenos">4</span><span class="w">  </span><span class="nx">CustomButtonData</span><span class="p">,</span><span class="w"></span>
+</span><span class="linenos">5</span><span class="w">  </span><span class="nx">MarkdwonData</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">6</span><span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="linenos">7</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Lastly, we need to add some logic to the default function <code class="code docutils literal notranslate"><span class="pre">WidgetDefaultsProvider(type)</span></code> so that when it is called with the argument <code class="code docutils literal notranslate"><span class="pre">WidgetsMapping.INPUTS.CUSTOM_BUTTON</span></code> it returns the appropriate data:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">WidgetDefaultsProvider</span><span class="p">(</span><span class="nx">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="w">   </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="nx">WidgetsMapping</span><span class="p">.</span><span class="nx">CHARTS</span><span class="p">.</span><span class="nx">COMBO</span><span class="o">:</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="w">         </span><span class="k">return</span><span class="w"> </span><span class="nx">ChartData</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="nx">WidgetsMapping</span><span class="p">.</span><span class="nx">INPUTS</span><span class="p">.</span><span class="nx">BUTTON</span><span class="o">:</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="w">         </span><span class="k">return</span><span class="w"> </span><span class="nx">ButtonData</span><span class="p">;</span><span class="w"></span>
+<span class="hll"><span class="linenos"> 7</span><span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="nx">WidgetsMapping</span><span class="p">.</span><span class="nx">INPUTS</span><span class="p">.</span><span class="nx">CUSTOM_BUTTON</span><span class="o">:</span><span class="w"></span>
+</span><span class="hll"><span class="linenos"> 8</span><span class="w">         </span><span class="k">return</span><span class="w"> </span><span class="nx">CustomButtonData</span><span class="p">;</span><span class="w"></span>
+</span><span class="linenos"> 9</span><span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="nx">WidgetsMapping</span><span class="p">.</span><span class="nx">INPUTS</span><span class="p">.</span><span class="nx">RADIO</span><span class="o">:</span><span class="w"></span>
+<span class="linenos">10</span><span class="w">         </span><span class="k">return</span><span class="w"> </span><span class="nx">RadioData</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">      </span><span class="p">...</span><span class="w"></span>
+<span class="linenos">12</span><span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">13</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
 </section>
 
 

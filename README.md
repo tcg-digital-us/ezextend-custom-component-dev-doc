@@ -1,7 +1,7 @@
 # ezextend-custom-component-dev-doc
 Documentation on how to create custom dashboard visualization components
 
-The current pdf build of the manual exists [here](build/pdf/latex/ezextenddevelopmentmanual.pdf)
+The web version of the documentation is [here](https://tcg-digital-us.github.io/ezextend-custom-component-dev-doc/) and the current pdf version can be downloaded [here](build/pdf/latex/ezextenddevelopmentmanual.pdf).
 
 ## Install Dependencies
 

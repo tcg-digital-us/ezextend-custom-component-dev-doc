@@ -31,7 +31,7 @@ After installing, tell NVM to download the specific version we need (If you alre
 
 .. parsed-literal::
 
-   nvm install \ |node-version|\ 
+   $ nvm install \ |node-version|\ 
 
 
 Nginx
@@ -49,4 +49,4 @@ Install Nginx with your package manager, e.g.:
 
 .. code::
 
-   sudo apt-get install nginx
+   $ sudo apt-get install nginx

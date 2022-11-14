@@ -111,7 +111,11 @@ Notice that we are referencing the title via the key-value pair that we entered 
    const color = 'rgb(203 203 203)';
    ...
 
-If we run ezeXtend in `Development Mode <../setup.html#development-mode>`_, we can see our component that has yet to be created listed as an option in the component sidebar:
+If we run ezeXtend in `Development Mode <../setup.html#development-mode>`_, we can see our component that has yet to be created listed as an option in the component sidebar. This is shown in :numref:`add-entry`.
 
+.. _add-entry:
 .. figure:: /_static/images/add_entry_1.jpg
    :align: center
+
+   A new custom button entry listed in the widgets sidebar.
+| 

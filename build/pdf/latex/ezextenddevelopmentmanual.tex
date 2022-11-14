@@ -40,7 +40,7 @@
 
 
 \usepackage[Bjarne]{fncychap}
-\usepackage{sphinx}
+\usepackage[,numfigreset=1,mathnumfig]{sphinx}
 
 \fvset{fontsize=auto}
 \usepackage{geometry}
@@ -62,7 +62,7 @@
 
 
 \title{EzeXtend Development Manual}
-\date{Nov 09, 2022}
+\date{Nov 14, 2022}
 \release{}
 \author{Anthony Mesa}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -115,7 +115,7 @@ Node Version Manager is essential when working within a NodeJS environment as it
 \sphinxAtStartPar
 After installing, tell NVM to download the specific version we need (If you already have this version installed, you can skip the installation command):
 \begin{sphinxalltt}
-nvm install 10.15.3
+\$ nvm install 10.15.3
 \end{sphinxalltt}
 
 
@@ -137,7 +137,7 @@ This guide will only cover configuration for Linux based operating systems, so W
 Install Nginx with your package manager, e.g.:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{sudo} \PYG{n}{apt}\PYG{o}{\PYGZhy{}}\PYG{n}{get} \PYG{n}{install} \PYG{n}{nginx}
+\PYGZdl{} sudo apt\PYGZhy{}get install nginx
 \end{sphinxVerbatim}
 
 \sphinxstepscope
@@ -364,13 +364,18 @@ Notice that we are referencing the title via the key\sphinxhyphen{}value pair th
 \sphinxresetverbatimhllines
 
 \sphinxAtStartPar
-If we run ezeXtend in \sphinxhref{../setup.html\#development-mode}{Development Mode}, we can see our component that has yet to be created listed as an option in the component sidebar:
+If we run ezeXtend in \sphinxhref{../setup.html\#development-mode}{Development Mode}, we can see our component that has yet to be created listed as an option in the component sidebar. This is shown in \hyperref[\detokenize{custom_component/add_entry:add-entry}]{Fig.\@ \ref{\detokenize{custom_component/add_entry:add-entry}}}.
 
 \begin{figure}[htbp]
 \centering
+\capstart
 
 \noindent\sphinxincludegraphics{{add_entry_1}.jpg}
-\end{figure}
+\caption{A new custom button entry listed in the widgets sidebar.}\label{\detokenize{custom_component/add_entry:id1}}\label{\detokenize{custom_component/add_entry:add-entry}}\end{figure}
+
+\begin{DUlineblock}{0em}
+\item[] 
+\end{DUlineblock}
 
 \sphinxstepscope
 
@@ -378,7 +383,78 @@ If we run ezeXtend in \sphinxhref{../setup.html\#development-mode}{Development M
 \section{Create Default Parameters for Component}
 \label{\detokenize{custom_component/default_parameters:create-default-parameters-for-component}}\label{\detokenize{custom_component/default_parameters::doc}}
 \sphinxAtStartPar
-Lorem ipsum et dolor
+To create the default parameters for our custom button we need to create a new file in \sphinxcode{\sphinxupquote{/EZEXTEND\_ROOT/ui/src/Components/Widgets/Defaults}} named \sphinxcode{\sphinxupquote{CustomButton.js}}.
+
+\sphinxAtStartPar
+In this file, we need to create a single exported variable, a JSON object that contains information describing the default state of the component when it is initially dragged onto the dashboard:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k}{export}\PYG{+w}{ }\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{CustomButtonData}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{   }\PYG{n+nx}{size}\PYG{o}{:}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{      }\PYG{n+nx}{width}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{200}\PYG{p}{,}
+\PYG{+w}{      }\PYG{n+nx}{height}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{40}
+\PYG{+w}{   }\PYG{p}{\PYGZcb{}}\PYG{p}{,}
+
+\PYG{+w}{   }\PYG{n+nx}{data}\PYG{o}{:}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{      }\PYG{n+nx}{label}\PYG{o}{:}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}Action\PYGZsq{}}
+\PYG{+w}{   }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Here we have defined the initial size of the element and the string text to be displayed on the button when it is first created. Now, we can navigate to the file \sphinxcode{\sphinxupquote{/EZEXTEND\_ROOT/ui/src/Components/Widgets/Defaults/index.js}} to import and apply the default data we have just created. First we will import the JSON object we just created:
+
+\fvset{hllines={, 4,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{p}{...}
+\PYG{k}{import}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{ChartData}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k+kr}{from}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}./Chart\PYGZsq{}}\PYG{p}{;}
+\PYG{k}{import}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{ButtonData}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k+kr}{from}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}./Button\PYGZsq{}}\PYG{p}{;}
+\PYG{k}{import}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{CustomButtonData}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k+kr}{from}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}./CustomButton\PYGZsq{}}\PYG{p}{;}
+\PYG{k}{import}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{MarkdownData}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k+kr}{from}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}./Markdown\PYGZsq{}}\PYG{p}{;}
+\PYG{p}{...}
+\end{sphinxVerbatim}
+\sphinxresetverbatimhllines
+
+\sphinxAtStartPar
+Currently as you can see, all of the custom data is spread across multiple files. This index file will serve as a one\sphinxhyphen{}stop\sphinxhyphen{}shop to access all of these default data objects. To achieve this, all of the defaults that are imported are promptly exported from \sphinxcode{\sphinxupquote{index.js}} so that they can be called elsewhere by importing this index file. We will include our imported custom button data as an available export:
+
+\begin{sphinxadmonition}{attention}{Attention:}
+\sphinxAtStartPar
+More info needs to be added here as why this is necessary given that this list of exports is not used elsewhere in the code.
+\end{sphinxadmonition}
+
+\fvset{hllines={, 4,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k}{export}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n+nx}{ChartData}\PYG{p}{,}
+\PYG{+w}{  }\PYG{n+nx}{ButtonData}\PYG{p}{,}
+\PYG{+w}{  }\PYG{n+nx}{CustomButtonData}\PYG{p}{,}
+\PYG{+w}{  }\PYG{n+nx}{MarkdwonData}\PYG{p}{,}
+\PYG{+w}{  }\PYG{p}{...}
+\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+\end{sphinxVerbatim}
+\sphinxresetverbatimhllines
+
+\sphinxAtStartPar
+Lastly, we need to add some logic to the default function \sphinxcode{\sphinxupquote{WidgetDefaultsProvider(type)}} so that when it is called with the argument \sphinxcode{\sphinxupquote{WidgetsMapping.INPUTS.CUSTOM\_BUTTON}} it returns the appropriate data:
+
+\fvset{hllines={, 7, 8,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k}{export}\PYG{+w}{ }\PYG{k}{default}\PYG{+w}{ }\PYG{k+kd}{function}\PYG{+w}{ }\PYG{n+nx}{WidgetDefaultsProvider}\PYG{p}{(}\PYG{n+nx}{type}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{   }\PYG{k}{switch}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{type}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{      }\PYG{k}{case}\PYG{+w}{ }\PYG{n+nx}{WidgetsMapping}\PYG{p}{.}\PYG{n+nx}{CHARTS}\PYG{p}{.}\PYG{n+nx}{COMBO}\PYG{o}{:}
+\PYG{+w}{         }\PYG{k}{return}\PYG{+w}{ }\PYG{n+nx}{ChartData}\PYG{p}{;}
+\PYG{+w}{      }\PYG{k}{case}\PYG{+w}{ }\PYG{n+nx}{WidgetsMapping}\PYG{p}{.}\PYG{n+nx}{INPUTS}\PYG{p}{.}\PYG{n+nx}{BUTTON}\PYG{o}{:}
+\PYG{+w}{         }\PYG{k}{return}\PYG{+w}{ }\PYG{n+nx}{ButtonData}\PYG{p}{;}
+\PYG{+w}{      }\PYG{k}{case}\PYG{+w}{ }\PYG{n+nx}{WidgetsMapping}\PYG{p}{.}\PYG{n+nx}{INPUTS}\PYG{p}{.}\PYG{n+nx}{CUSTOM\PYGZus{}BUTTON}\PYG{o}{:}
+\PYG{+w}{         }\PYG{k}{return}\PYG{+w}{ }\PYG{n+nx}{CustomButtonData}\PYG{p}{;}
+\PYG{+w}{      }\PYG{k}{case}\PYG{+w}{ }\PYG{n+nx}{WidgetsMapping}\PYG{p}{.}\PYG{n+nx}{INPUTS}\PYG{p}{.}\PYG{n+nx}{RADIO}\PYG{o}{:}
+\PYG{+w}{         }\PYG{k}{return}\PYG{+w}{ }\PYG{n+nx}{RadioData}\PYG{p}{;}
+\PYG{+w}{      }\PYG{p}{...}
+\PYG{+w}{   }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+\sphinxresetverbatimhllines
 
 \sphinxstepscope
 
@@ -386,7 +462,122 @@ Lorem ipsum et dolor
 \section{Create a Custom React Component}
 \label{\detokenize{custom_component/create_component:create-a-custom-react-component}}\label{\detokenize{custom_component/create_component::doc}}
 \sphinxAtStartPar
-Lorem ipsum et dolor
+Now, we can actually start creating our custom buton! To do so, we will first create a folder for our React module code called \sphinxcode{\sphinxupquote{CustomButton}} in \sphinxcode{\sphinxupquote{/EZEXTEND\_ROOT/ui/src/Components/Widgets/}}.
+
+\sphinxAtStartPar
+Create and open a new file \sphinxcode{\sphinxupquote{CustomButton.js}}. EzeXtend uses Redux to manage complicated state in the application, so we will need to import the state selector from Redux:
+
+\begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
+If this is your first time hearing about “state” in regards to React, Redux, or both, then you should take a moment to look into both of these softwares and the concept of state and how they handle them in greater depth, as this is an integral part of working with React and can be confusing if you are out of the loop.
+\end{sphinxadmonition}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k}{import}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{useSelector}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k+kr}{from}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}react\PYGZhy{}redux\PYGZsq{}}\PYG{p}{;}
+\PYG{k}{import}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{Button}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k+kr}{from}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}@mui/material\PYGZsq{}}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+We are taking the easy route with this button, and rather than recreating a button from scratch, we are instead using a pre\sphinxhyphen{}made React button provided in the Material library and we are wrapping it with our custom specifications. We need to define the functional component and provide it as an exportable default:
+
+\fvset{hllines={, 4, 5, 6, 8,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{p}{...}
+\PYG{k}{import}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{Button}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k+kr}{from}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}@mui/material\PYGZsq{}}\PYG{p}{;}
+
+\PYG{k+kd}{function}\PYG{+w}{ }\PYG{n+nx}{CustomButton}\PYG{p}{(}\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{id}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{export}\PYG{+w}{ }\PYG{k}{default}\PYG{+w}{ }\PYG{n+nx}{CustomButton}\PYG{p}{;}
+\end{sphinxVerbatim}
+\sphinxresetverbatimhllines
+
+\sphinxAtStartPar
+Next, we will make our custom button return the pre\sphinxhyphen{}made button provided by the Material library. We will also provide some properties to the JSX element so that we can customize the button slightly:
+
+\fvset{hllines={, 2, 3, 4, 5, 6,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{n}{function} \PYG{n}{CustomButton}\PYG{p}{(}\PYG{p}{\PYGZob{}} \PYG{n+nb}{id} \PYG{p}{\PYGZcb{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{k}{return} \PYG{p}{(}
+      \PYG{o}{\PYGZlt{}}\PYG{n}{Button} \PYG{n}{sx}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{p}{\PYGZob{}}\PYG{n}{height}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{100}\PYG{l+s+s1}{\PYGZpc{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{width}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{100}\PYG{l+s+s1}{\PYGZpc{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{\PYGZcb{}}\PYG{p}{\PYGZcb{}} \PYG{n}{variant}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{outlined}\PYG{l+s+s1}{\PYGZsq{}}\PYG{o}{\PYGZgt{}}
+
+      \PYG{o}{\PYGZlt{}}\PYG{o}{/}\PYG{n}{Button}\PYG{o}{\PYGZgt{}}
+   \PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+\sphinxresetverbatimhllines
+
+\sphinxAtStartPar
+Here we are passing two props, \sphinxcode{\sphinxupquote{sx}} and \sphinxcode{\sphinxupquote{variant}}. The former allows us to define a JSON object containing a subset of CSS parameters that will be used to override the default CSS styling that comes with Material UI buttons. The latter is a property defined by Material, the button type or variant. In this case we are using the ‘outlined’ button variant.
+
+\sphinxAtStartPar
+We want the label for our button to be displayed within the button itself, so to do this we will need to get the label from our \sphinxcode{\sphinxupquote{CustomButtonData}} from earlier. The crux here is that we will not be importing the button data directly, instead EzeXtend will load that custom data at runtime and make it available throughout the application via Redux. Because of this, we will have to load the data in from Redux and apply it to our label within the CustomButton module like so:
+
+\begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
+The array \sphinxcode{\sphinxupquote{evaluatedWidgetProperties}} at index \sphinxcode{\sphinxupquote{id}} contains the JSON object value corresponding to the \sphinxcode{\sphinxupquote{data}} key in the \sphinxcode{\sphinxupquote{CustomButtonData}} object we defined.
+\end{sphinxadmonition}
+
+\fvset{hllines={, 3, 4, 5, 9,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{n}{function} \PYG{n}{CustomButton}\PYG{p}{(}\PYG{p}{\PYGZob{}} \PYG{n+nb}{id} \PYG{p}{\PYGZcb{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+
+   \PYG{n}{const} \PYG{n}{props} \PYG{o}{=} \PYG{n}{useSelector}\PYG{p}{(}
+      \PYG{p}{(}\PYG{n}{store}\PYG{p}{)} \PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{store}\PYG{o}{.}\PYG{n}{dashboard}\PYG{o}{.}\PYG{n}{evaluation}\PYG{o}{.}\PYG{n}{evaluatedWidgetProperties}\PYG{p}{[}\PYG{n+nb}{id}\PYG{p}{]}
+   \PYG{p}{)}\PYG{p}{;}
+
+   \PYG{k}{return} \PYG{p}{(}
+      \PYG{o}{\PYGZlt{}}\PYG{n}{Button} \PYG{n}{sx}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{p}{\PYGZob{}}\PYG{n}{height}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{100}\PYG{l+s+s1}{\PYGZpc{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{width}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{100}\PYG{l+s+s1}{\PYGZpc{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{\PYGZcb{}}\PYG{p}{\PYGZcb{}} \PYG{n}{variant}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{outlined}\PYG{l+s+s1}{\PYGZsq{}}\PYG{o}{\PYGZgt{}}
+         \PYG{p}{\PYGZob{}} \PYG{n}{props}\PYG{o}{.}\PYG{n}{label} \PYG{p}{\PYGZcb{}}
+      \PYG{o}{\PYGZlt{}}\PYG{o}{/}\PYG{n}{Button}\PYG{o}{\PYGZgt{}}
+   \PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+\sphinxresetverbatimhllines
+
+\sphinxAtStartPar
+Were we are providing \sphinxcode{\sphinxupquote{useSelector()}} an anonymous function as an argument, knowing that that anonymous function will be provided the store that contains our state data.
+
+\sphinxAtStartPar
+Finally, we need to tell EzeXtend that our component exists. To do this we will modify \sphinxcode{\sphinxupquote{/EZEXTEND\_ROOT/ui/src/Components/Panel.js}}. First import the new component, and then in the function \sphinxcode{\sphinxupquote{ComponentProvider()}}, we need to return the JSX for our new custom button in the case that it is selected from within the panel:
+
+\fvset{hllines={, 3, 12, 13,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{o}{.}\PYG{o}{.}\PYG{o}{.}
+\PYG{k+kn}{import} \PYG{n+nn}{Button} \PYG{k+kn}{from} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Components/Widgets/Button/Button}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{;}
+\PYG{k+kn}{import} \PYG{n+nn}{CustomButton} \PYG{k+kn}{from} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Components/Widgets/CustomButton/CustomButton}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{;}
+\PYG{k+kn}{import} \PYG{n+nn}{Radio} \PYG{k+kn}{from} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Components/Widgets/Radio/Radio}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{;}
+\PYG{o}{.}\PYG{o}{.}\PYG{o}{.}
+\PYG{n}{function} \PYG{n}{ComponentProvider}\PYG{p}{(}\PYG{n+nb}{type}\PYG{p}{,} \PYG{n+nb}{id}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{n}{switch}\PYG{p}{(}\PYG{n+nb}{type}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{k}{case} \PYG{n}{WidgetsMapping}\PYG{o}{.}\PYG{n}{CHARTS}\PYG{o}{.}\PYG{n}{COMBO}\PYG{p}{:}
+         \PYG{k}{return} \PYG{o}{\PYGZlt{}}\PYG{n}{Chart} \PYG{n+nb}{id}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n+nb}{id}\PYG{p}{\PYGZcb{}} \PYG{o}{/}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
+      \PYG{k}{case} \PYG{n}{WidgetsMapping}\PYG{o}{.}\PYG{n}{INPUTS}\PYG{o}{.}\PYG{n}{BUTTON}\PYG{p}{:}
+         \PYG{k}{return} \PYG{o}{\PYGZlt{}}\PYG{n}{Button} \PYG{n+nb}{id}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n+nb}{id}\PYG{p}{\PYGZcb{}} \PYG{o}{/}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
+      \PYG{k}{case} \PYG{n}{WidgetsMapping}\PYG{o}{.}\PYG{n}{INPUTS}\PYG{o}{.}\PYG{n}{CUSTOM\PYGZus{}BUTTON}\PYG{p}{:}
+         \PYG{k}{return} \PYG{o}{\PYGZlt{}}\PYG{n}{CustomButon} \PYG{n+nb}{id}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n+nb}{id}\PYG{p}{\PYGZcb{}} \PYG{o}{/}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
+      \PYG{k}{case} \PYG{n}{WidgetsMapping}\PYG{o}{.}\PYG{n}{INPUTS}\PYG{o}{.}\PYG{n}{RADIO}\PYG{p}{:}
+         \PYG{k}{return} \PYG{o}{\PYGZlt{}}\PYG{n}{Radio} \PYG{n+nb}{id}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n+nb}{id}\PYG{p}{\PYGZcb{}} \PYG{o}{/}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
+      \PYG{o}{.}\PYG{o}{.}\PYG{o}{.}
+   \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+\sphinxresetverbatimhllines
+
+\sphinxAtStartPar
+Now, we can run the project in development mode once more. We should be able to click and drag the custom button from the sidebar entry onto the dashboard. This is shown in \hyperref[\detokenize{custom_component/create_component:create-component}]{Fig.\@ \ref{\detokenize{custom_component/create_component:create-component}}}.
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics{{create_component_1}.jpg}
+\caption{A custom button widget displayed in the dashboard.}\label{\detokenize{custom_component/create_component:id1}}\label{\detokenize{custom_component/create_component:create-component}}\end{figure}
+
+\begin{DUlineblock}{0em}
+\item[] 
+\end{DUlineblock}
 
 \sphinxstepscope
 
@@ -394,7 +585,122 @@ Lorem ipsum et dolor
 \section{Create Component Formatting Options}
 \label{\detokenize{custom_component/formatting_options:create-component-formatting-options}}\label{\detokenize{custom_component/formatting_options::doc}}
 \sphinxAtStartPar
-Lorem ipsum et dolor
+The last step for integrating a custom element into the EzeXtend UI is to add formatting options, that is, options that can be provided to the element while it is on the dashboard to customize its appearance or action.
+
+\sphinxAtStartPar
+We will begin with a new file \sphinxcode{\sphinxupquote{/EZEXTEND\_ROOT/ui/src/Components/Widgets/CustomButton/CustomButtonOptions.js}}.
+
+\sphinxAtStartPar
+In this new file we need to import some important things to help us out. First we need to import the \sphinxcode{\sphinxupquote{PropertiesGroup}}. This is an element provided by EzeXtend that we can modify and will then be injected into the Properties panel providing our desired functionality. We can create multiple groups if we would like, it just depends on how you are wanting to structure your options. Next we are importing \sphinxcode{\sphinxupquote{TextField}} from the material UI library, this is the text field we will display in our property group that will update our button. For state\sphinxhyphen{}related functionality (such as changing the text displayed on the button) we will need to get two functions from redux, \sphinxcode{\sphinxupquote{useSelector}} and \sphinxcode{\sphinxupquote{useDispatch}}. The former allows us to retrieve data from Redux, and the latter allows us register changes we would like to make to the state (and Redux will handle the changes accordingly). \sphinxcode{\sphinxupquote{UpdateWidgetProperty}} is a Reducer we designed to work with Redux to make this state\sphinxhyphen{}changing functionality easier to work with, so we will also import that as well.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k}{import}\PYG{+w}{ }\PYG{n+nx}{PropertiesGroup}\PYG{+w}{ }\PYG{k+kr}{from}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}CommonComponents/PropertiesGroup\PYGZdq{}}\PYG{p}{;}
+\PYG{k}{import}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{TextField}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k+kr}{from}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}@mui/material\PYGZsq{}}\PYG{p}{;}
+\PYG{k}{import}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{useSelector}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{useDispatch}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k+kr}{from}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}react\PYGZhy{}redux\PYGZsq{}}\PYG{p}{;}
+\PYG{k}{import}\PYG{+w}{ }\PYG{n+nx}{UpdateWidgetProperty}\PYG{+w}{ }\PYG{k+kr}{from}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Store/Reducers/Actions/UpdateWidgetProperty\PYGZdq{}}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Like before, we will define our module, its return statement and that it is the default export of this file:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kd}{function}\PYG{+w}{ }\PYG{n+nx}{CustomButtonOptions}\PYG{p}{(}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{   }\PYG{k}{return}\PYG{+w}{ }\PYG{p}{(}
+
+\PYG{+w}{   }\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{export}\PYG{+w}{ }\PYG{k}{default}\PYG{+w}{ }\PYG{n+nx}{CustomButtonOptions}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+We need to display the label text of our button saved in \sphinxcode{\sphinxupquote{CustomButtonData.js}}, so we will need to grab the label from the state data store managed by Redux. First we retrieve the id of the widget by getting the id value stored by EzeXtend as the currently ‘active panel’. Then we use that ID to retrieve the option data from Redux. We will also need to create a Redux dispatch object to use later when we want to update the label value.
+
+\fvset{hllines={, 2, 3, 4,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kd}{function}\PYG{+w}{ }\PYG{n+nx}{CustomButtonOptions}\PYG{p}{(}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{   }\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{useSelector}\PYG{p}{(}\PYG{p}{(}\PYG{n+nx}{store}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n+nx}{store}\PYG{p}{.}\PYG{n+nx}{dashboard}\PYG{p}{.}\PYG{n+nx}{appState}\PYG{p}{.}\PYG{n+nx}{activePanelID}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{   }\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{options}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{useSelector}\PYG{p}{(}\PYG{p}{(}\PYG{n+nx}{store}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n+nx}{store}\PYG{p}{.}\PYG{n+nx}{dashboard}\PYG{p}{.}\PYG{n+nx}{widgets}\PYG{p}{[}\PYG{n+nx}{id}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{   }\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{dispatch}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{useDispatch}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{   }\PYG{k}{return}\PYG{+w}{ }\PYG{p}{(}
+
+\PYG{+w}{   }\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+\sphinxresetverbatimhllines
+
+\sphinxAtStartPar
+In the return statement, we define our property group, giving it a title, and inside that group, we create a text field element provided by Material UI. The value displayed on the label is the ‘label’ value of the options object that we retrieved earlier. The onChange property we are providing a function name \sphinxcode{\sphinxupquote{handleChange}} that we haven’t yet defined.
+
+\fvset{hllines={, 7, 8, 9,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+function CustomButtonOptions() \PYGZob{}
+   const id = useSelector((store) =\PYGZgt{} store.dashboard.appState.activePanelID);
+   const options = useSelector((store) =\PYGZgt{} store.dashboard.widgets[id]);
+   const dispatch = useDispatch();
+
+   return (
+      \PYGZlt{}PropertiesGroup title=\PYGZdq{}Format\PYGZdq{}\PYGZgt{}
+         \PYGZlt{}TextField label=\PYGZdq{}Label\PYGZdq{} value=\PYGZob{}options.label\PYGZcb{} onChange=\PYGZob{}handleChange\PYGZcb{}/\PYGZgt{}
+      \PYGZlt{}/PropertiesGroup\PYGZgt{}
+   )
+\PYGZcb{}
+\end{sphinxVerbatim}
+\sphinxresetverbatimhllines
+
+\sphinxAtStartPar
+To wrap it all up, we create our last variable, a function that takes in an event \sphinxcode{\sphinxupquote{e}}. The function runs Redux’s dispatch function which evaluates whatever is returned by \sphinxcode{\sphinxupquote{UpdateWidgetProperty()}}. We provide \sphinxcode{\sphinxupquote{UpdateWidgetProperty}} with the id of the widget we are looking to modify, the path of the options value we want to modify (in this case, the path is equal to the ‘key’s traversed in  \sphinxcode{\sphinxupquote{CustomButtonData.data}} to get to the value). The value is set to be the value of the text box whose updating triggered the event:
+
+\fvset{hllines={, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+function CustomButtonOptions() \PYGZob{}
+   const id = useSelector((store) =\PYGZgt{} store.dashboard.appState.activePanelID);
+   const options = useSelector((store) =\PYGZgt{} store.dashboard.widgets[id]);
+   const dispatch = useDispatch();
+
+   const handleChange = function(e) \PYGZob{}
+      dispatch(
+            UpdateWidgetProperty(\PYGZob{}
+               id,
+               update: \PYGZob{}
+                  path: \PYGZsq{}label\PYGZsq{},
+                  value: e.target.value
+               \PYGZcb{}
+            \PYGZcb{})
+      )
+   \PYGZcb{}
+
+   return (
+      \PYGZlt{}PropertiesGroup title=\PYGZdq{}Format\PYGZdq{}\PYGZgt{}
+         \PYGZlt{}TextField label=\PYGZdq{}Label\PYGZdq{} value=\PYGZob{}options.label\PYGZcb{} onChange=\PYGZob{}handleChange\PYGZcb{}/\PYGZgt{}
+      \PYGZlt{}/PropertiesGroup\PYGZgt{}
+   )
+\PYGZcb{}
+\end{sphinxVerbatim}
+\sphinxresetverbatimhllines
+
+\sphinxAtStartPar
+Running the development server once more, if we drag the CustomButton element onto the dashboard and open the buton’s properties panel by clicking the gear icon, then we will see the Format properties group displayed. Using the new ‘Label’ text field we can change the name displayed on the button to anything we would like. We can see this change reflected in \hyperref[\detokenize{custom_component/formatting_options:formatting-options}]{Fig.\@ \ref{\detokenize{custom_component/formatting_options:formatting-options}}}.
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics{{formatting_options_1}.jpg}
+\caption{A custom button and its properties panel. The panel has been used to update the button’s label text.}\label{\detokenize{custom_component/formatting_options:id1}}\label{\detokenize{custom_component/formatting_options:formatting-options}}\end{figure}
+
+\begin{DUlineblock}{0em}
+\item[] 
+\end{DUlineblock}
+
+\sphinxstepscope
+
+
+\chapter{Wrapping Up}
+\label{\detokenize{wrapping_up:wrapping-up}}\label{\detokenize{wrapping_up::doc}}
+\sphinxAtStartPar
+If you encounter an issue during this process, open an issue on the Github repository for this documentation \sphinxhref{https://github.com/tcg-digital-us/ezextend-custom-component-dev-doc}{Here} and we will do the best we can to help you. As of this time the EzeXtend extension process requires access to the EzeXtend source code that is only available to TCG Digital developers and partners. If you would like to become a part of EzeXtend community development in the future, please reach out to us at () for more info.
 
 
 

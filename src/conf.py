@@ -57,9 +57,12 @@ html_theme_options = {
     # 'prev_next_buttons_location': 'none'
 }
 
+numfig = True
+
 latex_elements = {
     'preamble': r'''
 \renewcommand{\familydefault}{\sfdefault}
+\counterwithin{figure}{section}
 '''
 }
 

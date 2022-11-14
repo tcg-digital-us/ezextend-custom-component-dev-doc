@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Create a Custom React Component &mdash; EzeXtend Development Manual  documentation</title>
+  <title>3.3. Create a Custom React Component &mdash; EzeXtend Development Manual  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
@@ -21,8 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Create Component Formatting Options" href="formatting_options.html" />
-    <link rel="prev" title="Create Default Parameters for Component" href="default_parameters.html" /> 
+    <link rel="next" title="3.4. Create Component Formatting Options" href="formatting_options.html" />
+    <link rel="prev" title="3.2. Create Default Parameters for Component" href="default_parameters.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -41,28 +41,29 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../install.html#nvm">NVM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install.html#nginx">Nginx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">1. Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#nvm">1.1. NVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#nginx">1.2. Nginx</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../setup.html#nvm">NVM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../setup.html#nginx">Nginx</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../setup.html#ezextend">ezeXtend</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../setup.html#development-mode">Development Mode</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../setup.html#release-mode">Release Mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">2. Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../setup.html#nvm">2.1. NVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup.html#nginx">2.2. Nginx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup.html#ezextend">2.3. ezeXtend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup.html#development-mode">2.3.1. Development Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup.html#release-mode">2.3.2. Release Mode</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Creating a Custom Dashboard Component</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="add_entry.html">Add Entry in Components List Sidebar</a></li>
-<li class="toctree-l2"><a class="reference internal" href="default_parameters.html">Create Default Parameters for Component</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Create a Custom React Component</a></li>
-<li class="toctree-l2"><a class="reference internal" href="formatting_options.html">Create Component Formatting Options</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Creating a Custom Dashboard Component</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="add_entry.html">3.1. Add Entry in Components List Sidebar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="default_parameters.html">3.2. Create Default Parameters for Component</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.3. Create a Custom React Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formatting_options.html">3.4. Create Component Formatting Options</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../wrapping_up.html">4. Wrapping Up</a></li>
 </ul>
 
         </div>
@@ -79,8 +80,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Creating a Custom Dashboard Component</a> &raquo;</li>
-      <li>Create a Custom React Component</li>
+          <li><a href="index.html"><span class="section-number">3. </span>Creating a Custom Dashboard Component</a> &raquo;</li>
+      <li><span class="section-number">3.3. </span>Create a Custom React Component</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/custom_component/create_component.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -91,10 +92,9 @@
            <div itemprop="articleBody">
              
   <section id="create-a-custom-react-component">
-<h1>Create a Custom React Component<a class="headerlink" href="#create-a-custom-react-component" title="Permalink to this headline"></a></h1>
+<h1><span class="section-number">3.3. </span>Create a Custom React Component<a class="headerlink" href="#create-a-custom-react-component" title="Permalink to this headline"></a></h1>
 <p>Now, we can actually start creating our custom buton! To do so, we will first create a folder for our React module code called <code class="code docutils literal notranslate"><span class="pre">CustomButton</span></code> in <code class="code docutils literal notranslate"><span class="pre">/EZEXTEND_ROOT/ui/src/Components/Widgets/</span></code>.</p>
-<p>Create two files in this new folder, <code class="code docutils literal notranslate"><span class="pre">CustomButton.js</span></code> and <code class="code docutils literal notranslate"><span class="pre">CustomButonOptions.js</span></code>.</p>
-<p>First we will work in <code class="code docutils literal notranslate"><span class="pre">CustomButton.js</span></code>. EzeXtend uses Redux to manage complicated state in the application, so we will need to import the state selector from Redux:</p>
+<p>Create and open a new file <code class="code docutils literal notranslate"><span class="pre">CustomButton.js</span></code>. EzeXtend uses Redux to manage complicated state in the application, so we will need to import the state selector from Redux:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If this is your first time hearing about “state” in regards to React, Redux, or both, then you should take a moment to look into both of these softwares and the concept of state and how they handle them in greater depth, as this is an integral part of working with React and can be confusing if you are out of the loop.</p>
@@ -145,14 +145,45 @@
 </pre></div>
 </div>
 <p>Were we are providing <code class="code docutils literal notranslate"><span class="pre">useSelector()</span></code> an anonymous function as an argument, knowing that that anonymous function will be provided the store that contains our state data.</p>
+<p>Finally, we need to tell EzeXtend that our component exists. To do this we will modify <code class="code docutils literal notranslate"><span class="pre">/EZEXTEND_ROOT/ui/src/Components/Panel.js</span></code>. First import the new component, and then in the function <code class="code docutils literal notranslate"><span class="pre">ComponentProvider()</span></code>, we need to return the JSX for our new custom button in the case that it is selected from within the panel:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="o">...</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">Button</span> <span class="kn">from</span> <span class="s1">&#39;Components/Widgets/Button/Button&#39;</span><span class="p">;</span>
+<span class="hll"><span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">CustomButton</span> <span class="kn">from</span> <span class="s1">&#39;Components/Widgets/CustomButton/CustomButton&#39;</span><span class="p">;</span>
+</span><span class="linenos"> 4</span><span class="kn">import</span> <span class="nn">Radio</span> <span class="kn">from</span> <span class="s1">&#39;Components/Widgets/Radio/Radio&#39;</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="o">...</span>
+<span class="linenos"> 6</span><span class="n">function</span> <span class="n">ComponentProvider</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos"> 7</span>   <span class="n">switch</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos"> 8</span>      <span class="k">case</span> <span class="n">WidgetsMapping</span><span class="o">.</span><span class="n">CHARTS</span><span class="o">.</span><span class="n">COMBO</span><span class="p">:</span>
+<span class="linenos"> 9</span>         <span class="k">return</span> <span class="o">&lt;</span><span class="n">Chart</span> <span class="nb">id</span><span class="o">=</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span> <span class="o">/&gt;</span><span class="p">;</span>
+<span class="linenos">10</span>      <span class="k">case</span> <span class="n">WidgetsMapping</span><span class="o">.</span><span class="n">INPUTS</span><span class="o">.</span><span class="n">BUTTON</span><span class="p">:</span>
+<span class="linenos">11</span>         <span class="k">return</span> <span class="o">&lt;</span><span class="n">Button</span> <span class="nb">id</span><span class="o">=</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span> <span class="o">/&gt;</span><span class="p">;</span>
+<span class="hll"><span class="linenos">12</span>      <span class="k">case</span> <span class="n">WidgetsMapping</span><span class="o">.</span><span class="n">INPUTS</span><span class="o">.</span><span class="n">CUSTOM_BUTTON</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">13</span>         <span class="k">return</span> <span class="o">&lt;</span><span class="n">CustomButon</span> <span class="nb">id</span><span class="o">=</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span> <span class="o">/&gt;</span><span class="p">;</span>
+</span><span class="linenos">14</span>      <span class="k">case</span> <span class="n">WidgetsMapping</span><span class="o">.</span><span class="n">INPUTS</span><span class="o">.</span><span class="n">RADIO</span><span class="p">:</span>
+<span class="linenos">15</span>         <span class="k">return</span> <span class="o">&lt;</span><span class="n">Radio</span> <span class="nb">id</span><span class="o">=</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span> <span class="o">/&gt;</span><span class="p">;</span>
+<span class="linenos">16</span>      <span class="o">...</span>
+<span class="linenos">17</span>   <span class="p">}</span>
+<span class="linenos">18</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Now, we can run the project in development mode once more. We should be able to click and drag the custom button from the sidebar entry onto the dashboard. This is shown in <a class="reference internal" href="#create-component"><span class="std std-numref">Fig. 3.2</span></a>.</p>
+<figure class="align-center" id="id1">
+<span id="create-component"></span><img alt="../_images/create_component_1.jpg" src="../_images/create_component_1.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.2 </span><span class="caption-text">A custom button widget displayed in the dashboard.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="default_parameters.html" class="btn btn-neutral float-left" title="Create Default Parameters for Component" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="formatting_options.html" class="btn btn-neutral float-right" title="Create Component Formatting Options" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="default_parameters.html" class="btn btn-neutral float-left" title="3.2. Create Default Parameters for Component" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="formatting_options.html" class="btn btn-neutral float-right" title="3.4. Create Component Formatting Options" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

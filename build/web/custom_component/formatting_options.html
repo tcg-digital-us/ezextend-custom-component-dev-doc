@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Create Component Formatting Options &mdash; EzeXtend Development Manual  documentation</title>
+  <title>3.4. Create Component Formatting Options &mdash; EzeXtend Development Manual  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
@@ -21,7 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Create a Custom React Component" href="create_component.html" /> 
+    <link rel="next" title="4. Wrapping Up" href="../wrapping_up.html" />
+    <link rel="prev" title="3.3. Create a Custom React Component" href="create_component.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,28 +41,29 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../install.html#nvm">NVM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install.html#nginx">Nginx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">1. Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#nvm">1.1. NVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#nginx">1.2. Nginx</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../setup.html#nvm">NVM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../setup.html#nginx">Nginx</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../setup.html#ezextend">ezeXtend</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../setup.html#development-mode">Development Mode</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../setup.html#release-mode">Release Mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">2. Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../setup.html#nvm">2.1. NVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup.html#nginx">2.2. Nginx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup.html#ezextend">2.3. ezeXtend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup.html#development-mode">2.3.1. Development Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup.html#release-mode">2.3.2. Release Mode</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Creating a Custom Dashboard Component</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="add_entry.html">Add Entry in Components List Sidebar</a></li>
-<li class="toctree-l2"><a class="reference internal" href="default_parameters.html">Create Default Parameters for Component</a></li>
-<li class="toctree-l2"><a class="reference internal" href="create_component.html">Create a Custom React Component</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Create Component Formatting Options</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Creating a Custom Dashboard Component</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="add_entry.html">3.1. Add Entry in Components List Sidebar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="default_parameters.html">3.2. Create Default Parameters for Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_component.html">3.3. Create a Custom React Component</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.4. Create Component Formatting Options</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../wrapping_up.html">4. Wrapping Up</a></li>
 </ul>
 
         </div>
@@ -78,8 +80,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Creating a Custom Dashboard Component</a> &raquo;</li>
-      <li>Create Component Formatting Options</li>
+          <li><a href="index.html"><span class="section-number">3. </span>Creating a Custom Dashboard Component</a> &raquo;</li>
+      <li><span class="section-number">3.4. </span>Create Component Formatting Options</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/custom_component/formatting_options.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -90,15 +92,96 @@
            <div itemprop="articleBody">
              
   <section id="create-component-formatting-options">
-<h1>Create Component Formatting Options<a class="headerlink" href="#create-component-formatting-options" title="Permalink to this headline"></a></h1>
-<p>Lorem ipsum et dolor</p>
+<h1><span class="section-number">3.4. </span>Create Component Formatting Options<a class="headerlink" href="#create-component-formatting-options" title="Permalink to this headline"></a></h1>
+<p>The last step for integrating a custom element into the EzeXtend UI is to add formatting options, that is, options that can be provided to the element while it is on the dashboard to customize its appearance or action.</p>
+<p>We will begin with a new file <code class="code docutils literal notranslate"><span class="pre">/EZEXTEND_ROOT/ui/src/Components/Widgets/CustomButton/CustomButtonOptions.js</span></code>.</p>
+<p>In this new file we need to import some important things to help us out. First we need to import the <code class="code docutils literal notranslate"><span class="pre">PropertiesGroup</span></code>. This is an element provided by EzeXtend that we can modify and will then be injected into the Properties panel providing our desired functionality. We can create multiple groups if we would like, it just depends on how you are wanting to structure your options. Next we are importing <code class="code docutils literal notranslate"><span class="pre">TextField</span></code> from the material UI library, this is the text field we will display in our property group that will update our button. For state-related functionality (such as changing the text displayed on the button) we will need to get two functions from redux, <code class="code docutils literal notranslate"><span class="pre">useSelector</span></code> and <code class="code docutils literal notranslate"><span class="pre">useDispatch</span></code>. The former allows us to retrieve data from Redux, and the latter allows us register changes we would like to make to the state (and Redux will handle the changes accordingly). <code class="code docutils literal notranslate"><span class="pre">UpdateWidgetProperty</span></code> is a Reducer we designed to work with Redux to make this state-changing functionality easier to work with, so we will also import that as well.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">import</span><span class="w"> </span><span class="nx">PropertiesGroup</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;CommonComponents/PropertiesGroup&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">2</span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">TextField</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@mui/material&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">3</span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useSelector</span><span class="p">,</span><span class="w"> </span><span class="nx">useDispatch</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-redux&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">4</span><span class="k">import</span><span class="w"> </span><span class="nx">UpdateWidgetProperty</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;Store/Reducers/Actions/UpdateWidgetProperty&quot;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Like before, we will define our module, its return statement and that it is the default export of this file:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">function</span><span class="w"> </span><span class="nx">CustomButtonOptions</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">2</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="w">   </span><span class="p">)</span><span class="w"></span>
+<span class="linenos">5</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">CustomButtonOptions</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>We need to display the label text of our button saved in <code class="code docutils literal notranslate"><span class="pre">CustomButtonData.js</span></code>, so we will need to grab the label from the state data store managed by Redux. First we retrieve the id of the widget by getting the id value stored by EzeXtend as the currently ‘active panel’. Then we use that ID to retrieve the option data from Redux. We will also need to create a Redux dispatch object to use later when we want to update the label value.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">function</span><span class="w"> </span><span class="nx">CustomButtonOptions</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="linenos">2</span><span class="w">   </span><span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useSelector</span><span class="p">((</span><span class="nx">store</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">store</span><span class="p">.</span><span class="nx">dashboard</span><span class="p">.</span><span class="nx">appState</span><span class="p">.</span><span class="nx">activePanelID</span><span class="p">);</span><span class="w"></span>
+</span><span class="hll"><span class="linenos">3</span><span class="w">   </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useSelector</span><span class="p">((</span><span class="nx">store</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">store</span><span class="p">.</span><span class="nx">dashboard</span><span class="p">.</span><span class="nx">widgets</span><span class="p">[</span><span class="nx">id</span><span class="p">]);</span><span class="w"></span>
+</span><span class="hll"><span class="linenos">4</span><span class="w">   </span><span class="kd">const</span><span class="w"> </span><span class="nx">dispatch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useDispatch</span><span class="p">();</span><span class="w"></span>
+</span><span class="linenos">5</span>
+<span class="linenos">6</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="linenos">7</span>
+<span class="linenos">8</span><span class="w">   </span><span class="p">)</span><span class="w"></span>
+<span class="linenos">9</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In the return statement, we define our property group, giving it a title, and inside that group, we create a text field element provided by Material UI. The value displayed on the label is the ‘label’ value of the options object that we retrieved earlier. The onChange property we are providing a function name <code class="code docutils literal notranslate"><span class="pre">handleChange</span></code> that we haven’t yet defined.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>function CustomButtonOptions() {
+<span class="linenos"> 2</span>   const id = useSelector((store) =&gt; store.dashboard.appState.activePanelID);
+<span class="linenos"> 3</span>   const options = useSelector((store) =&gt; store.dashboard.widgets[id]);
+<span class="linenos"> 4</span>   const dispatch = useDispatch();
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>   return (
+<span class="hll"><span class="linenos"> 7</span>      &lt;PropertiesGroup title=&quot;Format&quot;&gt;
+</span><span class="hll"><span class="linenos"> 8</span>         &lt;TextField label=&quot;Label&quot; value={options.label} onChange={handleChange}/&gt;
+</span><span class="hll"><span class="linenos"> 9</span>      &lt;/PropertiesGroup&gt;
+</span><span class="linenos">10</span>   )
+<span class="linenos">11</span>}
+</pre></div>
+</div>
+<p>To wrap it all up, we create our last variable, a function that takes in an event <code class="code docutils literal notranslate"><span class="pre">e</span></code>. The function runs Redux’s dispatch function which evaluates whatever is returned by <code class="code docutils literal notranslate"><span class="pre">UpdateWidgetProperty()</span></code>. We provide <code class="code docutils literal notranslate"><span class="pre">UpdateWidgetProperty</span></code> with the id of the widget we are looking to modify, the path of the options value we want to modify (in this case, the path is equal to the ‘key’s traversed in  <code class="code docutils literal notranslate"><span class="pre">CustomButtonData.data</span></code> to get to the value). The value is set to be the value of the text box whose updating triggered the event:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>function CustomButtonOptions() {
+<span class="linenos"> 2</span>   const id = useSelector((store) =&gt; store.dashboard.appState.activePanelID);
+<span class="linenos"> 3</span>   const options = useSelector((store) =&gt; store.dashboard.widgets[id]);
+<span class="linenos"> 4</span>   const dispatch = useDispatch();
+<span class="linenos"> 5</span>
+<span class="hll"><span class="linenos"> 6</span>   const handleChange = function(e) {
+</span><span class="hll"><span class="linenos"> 7</span>      dispatch(
+</span><span class="hll"><span class="linenos"> 8</span>            UpdateWidgetProperty({
+</span><span class="hll"><span class="linenos"> 9</span>               id,
+</span><span class="hll"><span class="linenos">10</span>               update: {
+</span><span class="hll"><span class="linenos">11</span>                  path: &#39;label&#39;,
+</span><span class="hll"><span class="linenos">12</span>                  value: e.target.value
+</span><span class="hll"><span class="linenos">13</span>               }
+</span><span class="hll"><span class="linenos">14</span>            })
+</span><span class="hll"><span class="linenos">15</span>      )
+</span><span class="hll"><span class="linenos">16</span>   }
+</span><span class="linenos">17</span>
+<span class="linenos">18</span>   return (
+<span class="linenos">19</span>      &lt;PropertiesGroup title=&quot;Format&quot;&gt;
+<span class="linenos">20</span>         &lt;TextField label=&quot;Label&quot; value={options.label} onChange={handleChange}/&gt;
+<span class="linenos">21</span>      &lt;/PropertiesGroup&gt;
+<span class="linenos">22</span>   )
+<span class="linenos">23</span>}
+</pre></div>
+</div>
+<p>Running the development server once more, if we drag the CustomButton element onto the dashboard and open the buton’s properties panel by clicking the gear icon, then we will see the Format properties group displayed. Using the new ‘Label’ text field we can change the name displayed on the button to anything we would like. We can see this change reflected in <a class="reference internal" href="#formatting-options"><span class="std std-numref">Fig. 3.3</span></a>.</p>
+<figure class="align-center" id="id1">
+<span id="formatting-options"></span><img alt="../_images/formatting_options_1.jpg" src="../_images/formatting_options_1.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.3 </span><span class="caption-text">A custom button and its properties panel. The panel has been used to update the button’s label text.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="create_component.html" class="btn btn-neutral float-left" title="Create a Custom React Component" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="create_component.html" class="btn btn-neutral float-left" title="3.3. Create a Custom React Component" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../wrapping_up.html" class="btn btn-neutral float-right" title="4. Wrapping Up" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

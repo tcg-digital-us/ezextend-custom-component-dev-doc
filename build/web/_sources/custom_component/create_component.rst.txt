@@ -4,9 +4,7 @@ Create a Custom React Component
 
 Now, we can actually start creating our custom buton! To do so, we will first create a folder for our React module code called :code:`CustomButton` in :code:`/EZEXTEND_ROOT/ui/src/Components/Widgets/`.
 
-Create two files in this new folder, :code:`CustomButton.js` and :code:`CustomButonOptions.js`.
-
-First we will work in :code:`CustomButton.js`. EzeXtend uses Redux to manage complicated state in the application, so we will need to import the state selector from Redux:
+Create and open a new file :code:`CustomButton.js`. EzeXtend uses Redux to manage complicated state in the application, so we will need to import the state selector from Redux:
 
 .. NOTE:: 
 
@@ -73,3 +71,37 @@ We want the label for our button to be displayed within the button itself, so to
    }
 
 Were we are providing :code:`useSelector()` an anonymous function as an argument, knowing that that anonymous function will be provided the store that contains our state data. 
+
+Finally, we need to tell EzeXtend that our component exists. To do this we will modify :code:`/EZEXTEND_ROOT/ui/src/Components/Panel.js`. First import the new component, and then in the function :code:`ComponentProvider()`, we need to return the JSX for our new custom button in the case that it is selected from within the panel:
+
+.. code-block::
+   :linenos:
+   :emphasize-lines: 3,12,13
+
+   ...
+   import Button from 'Components/Widgets/Button/Button';
+   import CustomButton from 'Components/Widgets/CustomButton/CustomButton';
+   import Radio from 'Components/Widgets/Radio/Radio';
+   ...
+   function ComponentProvider(type, id) {
+      switch(type) {
+         case WidgetsMapping.CHARTS.COMBO:
+            return <Chart id={id} />;
+         case WidgetsMapping.INPUTS.BUTTON:
+            return <Button id={id} />;
+         case WidgetsMapping.INPUTS.CUSTOM_BUTTON:
+            return <CustomButon id={id} />;
+         case WidgetsMapping.INPUTS.RADIO:
+            return <Radio id={id} />;
+         ...
+      }
+   }
+
+Now, we can run the project in development mode once more. We should be able to click and drag the custom button from the sidebar entry onto the dashboard. This is shown in :numref:`create-component`.
+
+.. _create-component:
+.. figure:: /_static/images/create_component_1.jpg
+   :align: center
+
+   A custom button widget displayed in the dashboard.
+|
